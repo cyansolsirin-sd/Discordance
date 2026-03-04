@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discordance - Short Film</title>
+    
+    <!-- 引入 Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400&display=swap" rel="stylesheet">
+    
+    <!-- 引入 AOS 动画库样式 (用于滚动淡入效果) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- 引入 Tailwind CSS (直接在浏览器中运行，无需安装) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 配置 Tailwind 主题 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        zinc: {
+                            850: '#1f1f22',
+                            950: '#0a0a0a', 
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- 自定义一些额外的样式 -->
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+            overflow-x: hidden;
+        }
+        /* 选中文字的颜色 */
+        ::selection {
+            background: #ffffff;
+            color: #000000;
+        }
+        /* 隐藏滚动条但保留功能 (可选) */
+        ::-webkit-scrollbar {
+            width: 8px;
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- ================= HERO SECTION (主视觉区域) ================= -->
+    <section class="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 overflow-hidden">
+        
+        <!-- 背景光效 -->
+        <div class="absolute inset-0 z-0 pointer-events-none">
+            <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-80 z-10"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-zinc-900/40 via-black to-black"></div>
+        </div>
+
+        <div class="z-10 w-full max-w-6xl flex flex-col items-center text-center space-y-12">
+            
+            <!-- 电影节桂冠 (装饰用) -->
+            <div class="flex gap-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-500" data-aos="fade-down" data-aos-duration="1000">
+                <div class="flex flex-col items-center">
+                    <span class="text-[10px] uppercase tracking-[0.2em] border-b border-white/20 pb-1 mb-1">Official Selection</span>
+                    <span class="font-serif italic text-xs">Witch Spirit 2026</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="text-[10px] uppercase tracking-[0.2em] border-b border-white/20 pb-1 mb-1">Winner</span>
+                    <span class="font-serif italic text-xs">Best Cinematography</span>
+                </div>
+            </div>
+
+            <!-- 标题 -->
+            <div data-aos="zoom-in" data-aos-duration="1200">
+                <h1 class="font-serif text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white uppercase mix-blend-difference">
+                    Discordance
+                </h1>
+                <p class="mt-4 text-sm md:text-base uppercase tracking-[0.4em] text-zinc-400 font-light">
+                    A Film by Francesca & Mintha
+                </p>
+            </div>
+
+            <!-- 视频播放区域 -->
+            <!-- 
+                 修改说明：
+                 找到下面的 iframe 标签。
+                 把 src="..." 里面的链接换成你自己的视频嵌入链接。
+                 例如 B站的嵌入代码或者 YouTube 的嵌入代码。
+            -->
+            <div class="w-full aspect-video bg-zinc-900 rounded-sm shadow-2xl border border-white/5 relative group overflow-hidden" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                
+                <!-- 这是一个占位符，如果你放了 iframe，可以把下面这个 div 删掉或者隐藏 -->
+                <div class="absolute inset-0 flex items-center justify-center bg-zinc-900 group-hover:bg-zinc-800 transition-colors duration-500 cursor-pointer z-10 pointer-events-none">
+                    <div class="text-center space-y-4">
+                        <div class="w-20 h-20 rounded-full border border-white/20 flex items-center justify-center mx-auto group-hover:scale-110 group-hover:border-white/60 transition-all duration-300">
+                            <i data-lucide="play" class="w-8 h-8 text-white fill-white opacity-80"></i>
+                        </div>
+                        <p class="text-zinc-500 text-sm tracking-widest uppercase">Watch Trailer</p>
+                    </div>
+                </div>
+
+<video 
+    class="absolute inset-0 w-full h-full z-20" 
+    controls>
+    <source src="https://drive.google.com/uc?export=download&id=1Y48_ub4leE4r6_vzRfu1itZ8zW57eFL-" type="video/mp4">
+</video>
+
+                <!-- 在此处插入你的视频 iframe -->
+                <!-- 示例 (取消注释即可使用): -->
+                <!-- 
+                <iframe 
+                    class="absolute inset-0 w-full h-full z-20" 
+                    src="Discordance.mp4" 
+                    scrolling="no" 
+                    border="0" 
+                    frameborder="0" 
+                    framespacing="0" 
+                    allowfullscreen="true">
+                </iframe> 
+                -->
+            </div>
+
+            <!-- 向下滚动提示 -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" data-aos="fade-in" data-aos-delay="1000">
+                <span class="text-[10px] uppercase tracking-widest text-zinc-600">Scroll</span>
+                <div class="w-[1px] h-12 bg-gradient-to-b from-zinc-600 to-transparent"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CAST SECTION (主演介绍) ================= -->
+    <section class="py-32 px-4 bg-zinc-950">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-center mb-24 text-white" data-aos="fade-up">
+                Starring
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 max-w-4xl mx-auto">
+                
+                <!-- 演员 1 -->
+                <div class="group relative" data-aos="fade-up" data-aos-delay="0">
+                    <div class="aspect-[2/3] overflow-hidden bg-zinc-900 mb-6 relative">
+                        <!-- 图片：把 src 换成你自己的图片路径，比如 "images/actor1.jpg" -->
+                        <img src="波江座.png" alt="Eridanus Black" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-100 group-hover:scale-105">
+                        
+                        <!-- 悬停显示的文字 -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                            <p class="text-zinc-300 text-sm font-light italic font-serif">"Eridanus Black – Heartbroken Performance with Ibanez Tube Screamer TS9"</p>
+                        </div>
+                    </div>
+                    <div class="text-center space-y-2">
+                        <h3 class="text-xl font-medium text-white tracking-wide uppercase">Eridanus Black</h3>
+                        <p class="text-zinc-500 text-xs tracking-[0.2em] uppercase">as himself</p>
+                    </div>
+                </div>
+
+                <!-- 演员 2 -->
+                <div class="group relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="aspect-[2/3] overflow-hidden bg-zinc-900 mb-6 relative">
+                        <img src="雪.png" alt="Fionneachta Sculley" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-100 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                            <p class="text-zinc-300 text-sm font-light italic font-serif">"Fionneachta Sculley - Jigs with Celtic Harp"</p>
+                        </div>
+                    </div>
+                    <div class="text-center space-y-2">
+                        <h3 class="text-xl font-medium text-white tracking-wide uppercase">Fionneachta Sculley</h3>
+                        <p class="text-zinc-500 text-xs tracking-[0.2em] uppercase">as herself</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CREW SECTION (演职员表) ================= -->
+    <section class="py-32 px-4 bg-black relative overflow-hidden">
+        <div class="max-w-3xl mx-auto relative z-10">
+            <div class="text-center mb-20" data-aos="fade-in">
+                <h2 class="text-sm font-bold tracking-[0.5em] uppercase text-zinc-500 mb-4">Credits</h2>
+                <div class="w-px h-8 bg-zinc-800 mx-auto"></div>
+            </div>
+
+<div class="space-y-12">
+                
+                <!-- A FILM BY -->
+                <div class="text-center py-8" data-aos="fade-up">
+                    <h3 class="text-zinc-500 text-xs uppercase tracking-[0.3em] mb-4">A Film By</h3>
+                    <div class="text-white font-serif text-3xl font-bold tracking-wide space-y-2">
+                        <p>FRANCESCA</p>
+                        <p>&</p>
+                        <p>MINTHA</p>
+                    </div>
+                </div>
+
+                <!-- DIRECTORS -->
+                <div class="flex flex-col md:flex-row items-baseline justify-between border-b border-zinc-900 pb-4 hover:border-zinc-800 transition-colors duration-300 group" data-aos="fade-up">
+                    <span class="text-zinc-500 text-sm uppercase tracking-widest font-light group-hover:text-zinc-400 transition-colors">Original Material / On-Set Direction</span>
+                    <span class="text-white font-serif text-xl italic mt-2 md:mt-0">Francesca</span>
+                </div>
+                <div class="flex flex-col md:flex-row items-baseline justify-between border-b border-zinc-900 pb-4 hover:border-zinc-800 transition-colors duration-300 group" data-aos="fade-up">
+                    <span class="text-zinc-500 text-sm uppercase tracking-widest font-light group-hover:text-zinc-400 transition-colors">Post-Production / Editing Direction</span>
+                    <span class="text-white font-serif text-xl italic mt-2 md:mt-0">Mintha</span>
+                </div>
+
+                <!-- STORY & SCREENPLAY -->
+                <div class="flex flex-col md:flex-row items-baseline justify-between border-b border-zinc-900 pb-4 hover:border-zinc-800 transition-colors duration-300 group" data-aos="fade-up">
+                    <span class="text-zinc-500 text-sm uppercase tracking-widest font-light group-hover:text-zinc-400 transition-colors">Story & Screenplay</span>
+                    <span class="text-white font-serif text-xl italic mt-2 md:mt-0">Francesca</span>
+                </div>
+
+                <!-- STARRING -->
+                <div class="pt-12 pb-4 border-b border-zinc-900" data-aos="fade-up">
+                    <h4 class="text-zinc-500 text-xs uppercase tracking-[0.2em] mb-6">Starring</h4>
+                    <div class="space-y-2 text-right">
+                        <p class="text-white font-serif text-xl italic">Eridanus Black</p>
+                        <p class="text-white font-serif text-xl italic">Fionneachta Sculley</p>
+                    </div>
+                </div>
+
+                <!-- CO-STARRING -->
+                <div class="pt-8 pb-4 border-b border-zinc-900" data-aos="fade-up">
+                    <h4 class="text-zinc-500 text-xs uppercase tracking-[0.2em] mb-6">Co-Starring</h4>
+                    <div class="space-y-2 text-right">
+                        <p class="text-white font-serif text-lg italic text-zinc-300">Adeline Sculley</p>
+                        <p class="text-white font-serif text-lg italic text-zinc-300">Carina Black</p>
+                        <p class="text-white font-serif text-lg italic text-zinc-300">Lacerta Black</p>
+                        <p class="text-white font-serif text-lg italic text-zinc-300">Perseis Potter</p>
+                        <p class="text-white font-serif text-lg italic text-zinc-300">Hercules Potter</p>
+                    </div>
+                </div>
+
+                <!-- SPECIAL APPEARANCE -->
+                <div class="pt-8 pb-4 border-b border-zinc-900" data-aos="fade-up">
+                    <h4 class="text-zinc-500 text-xs uppercase tracking-[0.2em] mb-6">Special Appearance</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-2 text-right">
+                        <p class="text-white font-serif text-lg italic text-zinc-400">Niamh Sculley</p>
+                        <p class="text-white font-serif text-lg italic text-zinc-400">Vulpecula Rasalhague</p>
+                        <p class="text-white font-serif text-lg italic text-zinc-400">Ricarda Samuel</p>
+                        <p class="text-white font-serif text-lg italic text-zinc-400">Sirius Black</p>
+                        <p class="text-white font-serif text-lg italic text-zinc-400">Alsephina Black</p>
+                        <p class="text-white font-serif text-lg italic text-zinc-400">Araminta Fairclough</p>
+                        <p class="text-white font-serif text-lg italic text-zinc-400 md:col-span-2">Harry Potter</p>
+                    </div>
+                </div>
+
+                <!-- CHARACTER CONCEPT -->
+                <div class="flex flex-col md:flex-row items-baseline justify-between border-b border-zinc-900 pb-4 hover:border-zinc-800 transition-colors duration-300 group" data-aos="fade-up">
+                    <span class="text-zinc-500 text-sm uppercase tracking-widest font-light group-hover:text-zinc-400 transition-colors">Character Concept / Original Design</span>
+                    <div class="text-right">
+                        <span class="block text-white font-serif text-xl italic mt-2 md:mt-0">Francesca</span>
+                        <span class="block text-white font-serif text-xl italic">Mintha</span>
+                    </div>
+                </div>
+
+                <!-- POST-PRODUCTION BLOCK -->
+                <div class="pt-12 pb-4 space-y-4" data-aos="fade-up">
+                    <h4 class="text-zinc-500 text-xs uppercase tracking-[0.2em] mb-6 border-b border-zinc-900 pb-2">Post-Production</h4>
+                    
+                    <div class="flex justify-between items-baseline border-b border-zinc-900/50 pb-2">
+                        <span class="text-zinc-600 text-xs uppercase tracking-wider">Supervision</span>
+                        <span class="text-white font-serif text-lg italic">Mintha</span>
+                    </div>
+                    <div class="flex justify-between items-baseline border-b border-zinc-900/50 pb-2">
+                        <span class="text-zinc-600 text-xs uppercase tracking-wider">Film Editor</span>
+                        <span class="text-white font-serif text-lg italic">Mintha</span>
+                    </div>
+                    <div class="flex justify-between items-baseline border-b border-zinc-900/50 pb-2">
+                        <span class="text-zinc-600 text-xs uppercase tracking-wider">Sound Design</span>
+                        <span class="text-white font-serif text-lg italic">Mintha</span>
+                    </div>
+                    <div class="flex justify-between items-baseline border-b border-zinc-900/50 pb-2">
+                        <span class="text-zinc-600 text-xs uppercase tracking-wider">Rhythm & Editing Structure</span>
+                        <span class="text-white font-serif text-lg italic">Mintha</span>
+                    </div>
+                    <div class="flex justify-between items-baseline border-b border-zinc-900/50 pb-2">
+                        <span class="text-zinc-600 text-xs uppercase tracking-wider">Voice Direction & Subtitles</span>
+                        <span class="text-white font-serif text-lg italic">Mintha</span>
+                    </div>
+                    <div class="flex justify-between items-baseline border-b border-zinc-900/50 pb-2">
+                        <span class="text-zinc-600 text-xs uppercase tracking-wider">Material Processing</span>
+                        <span class="text-white font-serif text-lg italic">Mintha</span>
+                    </div>
+                </div>
+
+                <!-- MUSIC -->
+                <div class="flex flex-col md:flex-row items-baseline justify-between border-b border-zinc-900 pb-4 hover:border-zinc-800 transition-colors duration-300 group" data-aos="fade-up">
+                    <span class="text-zinc-500 text-sm uppercase tracking-widest font-light group-hover:text-zinc-400 transition-colors">Original Score & Musical Direction</span>
+                    <span class="text-white font-serif text-xl italic mt-2 md:mt-0">Mintha</span>
+                </div>
+
+                <!-- CREATIVE CONSULTATION -->
+                <div class="flex flex-col md:flex-row items-baseline justify-between border-b border-zinc-900 pb-4 hover:border-zinc-800 transition-colors duration-300 group" data-aos="fade-up">
+                    <span class="text-zinc-500 text-sm uppercase tracking-widest font-light group-hover:text-zinc-400 transition-colors">Story & Scene Feedback</span>
+                    <span class="text-white font-serif text-xl italic mt-2 md:mt-0">Mintha</span>
+                </div>
+
+                <!-- ART DIRECTION -->
+                <div class="flex flex-col md:flex-row items-baseline justify-between border-b border-zinc-900 pb-4 hover:border-zinc-800 transition-colors duration-300 group" data-aos="fade-up">
+                    <span class="text-zinc-500 text-sm uppercase tracking-widest font-light group-hover:text-zinc-400 transition-colors">Art Direction</span>
+                    <span class="text-white font-serif text-xl italic mt-2 md:mt-0">Francesca</span>
+                </div>
+
+                <!-- VISUAL LANGUAGE -->
+                <div class="flex flex-col md:flex-row items-baseline justify-between border-b border-zinc-900 pb-4 hover:border-zinc-800 transition-colors duration-300 group" data-aos="fade-up">
+                    <span class="text-zinc-500 text-sm uppercase tracking-widest font-light group-hover:text-zinc-400 transition-colors">Visual Language & Storyboard</span>
+                    <span class="text-white font-serif text-xl italic mt-2 md:mt-0">Francesca</span>
+                </div>
+
+                <!-- PROMPT CINEMATOGRAPHY -->
+                <div class="flex flex-col md:flex-row items-baseline justify-between border-b border-zinc-900 pb-4 hover:border-zinc-800 transition-colors duration-300 group" data-aos="fade-up">
+                    <span class="text-zinc-500 text-sm uppercase tracking-widest font-light group-hover:text-zinc-400 transition-colors">Prompt Cinematography</span>
+                    <span class="text-white font-serif text-xl italic mt-2 md:mt-0">Francesca</span>
+                </div>
+
+                <!-- DIGITAL PRODUCTION -->
+                <div class="py-8 text-center" data-aos="fade-up">
+                    <h4 class="text-zinc-600 text-xs uppercase tracking-widest mb-2">Digital Production</h4>
+                    <p class="text-zinc-400 font-serif italic text-sm">This work received (somewhat unstable) assistance from several AI beings</p>
+                </div>
+
+                <!-- DISCLAIMER -->
+                <div class="py-12 text-center border-t border-zinc-900" data-aos="fade-up">
+                    <p class="text-zinc-600 text-[10px] uppercase tracking-widest leading-relaxed max-w-lg mx-auto">
+                        This production is a fan work created for personal entertainment.<br>
+                        All canon characters and the wizarding world belong to J. K. Rowling.<br>
+                        All original characters are created by Francesca and Mintha.<br>
+                        This work is not for commercial use.
+                    </p>
+                </div>
+
+                <!-- END CREDITS SCENE -->
+                <div class="py-20 text-center" data-aos="zoom-in">
+                    <h4 class="text-zinc-500 text-xs uppercase tracking-[0.4em] mb-6">End Credits Scene</h4>
+                    <p class="text-white font-serif text-2xl italic">
+                        Eridanus Black
+                    </p>
+                    <p class="text-zinc-500 text-sm mt-2 font-light tracking-wide">
+                        Heartbroken Performance with Ibanez Tube Screamer TS9
+                    </p>
+                </div>
+           </div>
+        </div>
+    </section>
+
+    <!-- 引入图标库脚本 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <!-- 引入 AOS 动画库脚本 -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: false, // 滚动回去再滚下来，动画会再次触发
+            mirror: true,
+            offset: 100,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+    </script>
+</body>
+</html>
